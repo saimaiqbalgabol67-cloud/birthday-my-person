@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, My Person ♡</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Arial,sans-serif; overflow-x:hidden;
+  background:linear-gradient(135deg,#ffe0ec,#f4ddff,#dff3ff);
+  color:#30243a; text-align:center;
+}
+.page{min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:35px 18px; position:relative; overflow:hidden}
+h1{font-size:clamp(42px,12vw,76px); margin:10px 0; font-family:cursive}
+h2{font-size:28px}
+p{font-size:18px; line-height:1.7; max-width:650px}
+button{
+  border:0; border-radius:30px; padding:14px 25px; margin:8px;
+  background:#fff; color:#8d3c78; font-size:16px; font-weight:bold;
+  box-shadow:0 8px 25px #8d3c7825; cursor:pointer;
+}
+button:hover{transform:translateY(-2px)}
+.hidden{display:none}
+.heart{position:absolute; animation:float 8s linear infinite; opacity:.65; font-size:25px}
+.balloon{position:absolute; bottom:-120px; font-size:65px; animation:rise 10s linear infinite}
+@keyframes rise{to{transform:translateY(-120vh) rotate(10deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
+.cake{font-size:105px; margin:15px}
+.gallery{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:850px}
+.gallery img{width:180px;height:180px;object-fit:cover;border-radius:20px;box-shadow:0 8px 25px #0002}
+.note{
+ background:#ffffffaa; backdrop-filter:blur(8px); padding:25px; border-radius:25px;
+ box-shadow:0 10px 35px #0001; max-width:700px;
+}
+.sparkle{font-size:30px}
+.small{font-size:14px;opacity:.7}
+</style>
+</head>
+<body>
+
+<div class="page" id="home">
+  <div class="heart" style="left:8%;top:15%">♡</div>
+  <div class="heart" style="right:10%;top:25%;animation-delay:2s">♡</div>
+  <div class="heart" style="left:15%;bottom:20%;animation-delay:4s">♡</div>
+
+  <div class="balloon" style="left:5%;animation-delay:0s">🎈</div>
+  <div class="balloon" style="left:25%;animation-delay:3s">🎈</div>
+  <div class="balloon" style="left:70%;animation-delay:1s">🎈</div>
+  <div class="balloon" style="left:90%;animation-delay:5s">🎈</div>
+
+  <div class="sparkle">✨ 💗 ✨</div>
+  <h1>Happy Birthday!</h1>
+  <h2>𝓜𝔂 𝓟𝓮𝓻𝓼𝓸𝓷 ♡</h2>
+  <p>Today is all about celebrating the most special person in my world. 🥹🤍</p>
+  <button onclick="show('message')">Open Your Surprise 💌</button>
+</div>
+
+<div class="page hidden" id="message">
+  <div class="cake">🎂</div>
+  <h2>A little birthday message for you 💗</h2>
+  <div class="note">
+    <p>
+      Happy Birthday to my favorite person. 🥹❤️<br><br>
+      You make ordinary moments feel special, and I’m so grateful
+      for every smile, every conversation, and every memory with you.
+      May your life always be filled with happiness, peace and beautiful moments.
+      <br><br>
+      <b>Stay happy, stay blessed, and always keep smiling. 🤍</b>
+    </p>
+  </div>
+  <button onclick="show('photos')">Our Memories 📸</button>
+</div>
+
+<div class="page hidden" id="photos">
+  <h2>Little Memories 🤍</h2>
+  <p class="small">Replace these sample boxes with your photos later.</p>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=500&q=80" alt="memory">
+    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80" alt="memory">
+    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=80" alt="memory">
+  </div>
+  <button onclick="show('final')">One Last Thing 💌</button>
+</div>
+
+<div class="page hidden" id="final">
+  <div class="sparkle">🌙 ✨ 🤍 ✨ 🌙</div>
+  <h1>My Person</h1>
+  <div class="note">
+    <p>
+      No matter how many birthdays come and go,<br>
+      I hope you always know how special you are to me. 🥹❤️
+      <br><br>
+      <b>Happy Birthday, My Person. ♡</b>
+    </p>
+  </div>
+  <button onclick="celebrate()">Make a Wish 🎂✨</button>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+function celebrate(){
+  for(let i=0;i<35;i++){
+    const s=document.createElement('div');
+    s.textContent=['💗','✨','🎉','💖','🎈'][Math.floor(Math.random()*5)];
+    s.style.position='fixed';
+    s.style.left=Math.random()*100+'vw';
+    s.style.top='-30px';
+    s.style.fontSize=(20+Math.random()*25)+'px';
+    s.style.zIndex=99;
+    s.style.transition='transform 3s linear, opacity 3s';
+    document.body.appendChild(s);
+    setTimeout(()=>{s.style.transform=`translateY(110vh) rotate(${Math.random()*500}deg)`;s.style.opacity=0},50);
+    setTimeout(()=>s.remove(),3100);
+  }
+}
+</script>
+</body>
+</html>
